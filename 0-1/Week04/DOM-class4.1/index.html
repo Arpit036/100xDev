@@ -8,9 +8,11 @@
 
       //fetch to connect backend to the frontend
 
-      fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b).then(
+      fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b)
+      .then(
         function (response) {
-          response.text().then(function (ans) {
+          response.text()
+          .then(function (ans) {
             document.getElementById("finalSum").innerHtml = ans;
           });
         }

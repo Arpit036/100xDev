@@ -1,0 +1,58 @@
+<!-- Debouncing and throtlling -->
+<html>
+  <script>
+    // once
+    let timeout;
+    function debouncePopulateDiv(){
+        //how you cancel a clock ?
+        //  clearTimeout
+        clearTimeout(timeout);
+        timeout=  setTimeout(fucntion(){
+            populateDiv()
+        }, 1000);
+
+    }
+
+    function populateDiv(){
+        // debouncing thortlling
+        const a = document.getElementById("firstNumber").value;
+        const b = document.getElementById("secondNumber").value;
+        // axios
+
+        fetch(
+        "https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b
+      )
+      .then(
+        function (response) {
+          response.text()
+          .then(function (ans) {
+            document.getElementById("finalSum").innerHtml = ans;
+          });
+        }
+      );
+    }
+  </script>
+
+  <body>
+    <div>
+      <input
+        oninput="populateDiv()"
+        id="firstNumber"
+        type="text"
+        placeholder="First number"
+      />
+      <br />
+      <br />
+      <input
+        oninput="populateDiv()"
+        id="secondNumber"
+        type="text"
+        placeholder="First number"
+      />
+      <br />
+      <br />
+      <!-- <button onclick="populateDiv()"> Calculate sum</button> -->
+      <div id="finalSum"></div>
+    </div>
+  </body>
+</html>
